@@ -1,0 +1,367 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    padding-top: 80px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+footer {
+    position: relative;
+    z-index: 10;
+}
+
+
+/*  ==============================================================================================
+    HOME PAGE CSS
+    ============================================================================================== */
+
+/* ============================
+   NAVBAR CSS
+   ============================ */
+.custom-navbar {
+    background-color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+    .custom-navbar .nav-link {
+        font-weight: 500;
+        color: #1f2937;
+        margin: 0 10px;
+        position: relative;
+    }
+
+        .custom-navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background-color: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .custom-navbar .nav-link:hover::after,
+        .custom-navbar .nav-link.active::after {
+            width: 100%;
+        }
+
+    .custom-navbar .navbar-brand {
+        font-size: 1.4rem;
+        color: #2563eb;
+    }
+
+/* =============================
+   GLOBAL VARIABLES
+   ============================= */
+:root {
+    --primary: #3B82F6;         /* Bright Azure Blue */
+    --primary-soft: #93C5FD;    /* Soft blue for subtle text */
+    --text-main: #E5E7EB;       /* Main white text */
+    --text-muted: #9CA3AF;      /* Secondary text */
+    --chip-bg: rgba(255,255,255,0.08);
+    --chip-border: rgba(59,130,246,0.5);
+}
+
+/* =============================
+   BASE STYLES
+   ============================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--secondary);
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+}
+
+p {
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* =============================
+   SECTION SPACING
+   ============================= */
+section {
+    padding: 20px 20px;
+    margin: 0px 100px 0px 100px;
+}
+
+/* =============================
+   HERO SECTION
+   ============================= */
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at 20% 20%, rgba(0, 153, 255, 0.25), transparent 40%), radial-gradient(circle at 80% 80%, rgba(0, 102, 204, 0.25), transparent 40%), #0b1220;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.hero-tagline {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #475569;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.hero-title {
+    color: var(--text-main);
+}
+
+    .hero-title .text-primary {
+        color: var(--primary);
+    }
+
+.hero-role {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.hero-description,
+.hero-tagline {
+    color: var(--text-muted);
+}
+
+/* =============================
+   TECH STACK BADGES
+   ============================= */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 480px;
+}
+
+.tech-badge {
+    background: var(--chip-bg);
+    color: var(--primary-soft);
+    border: 1px solid var(--chip-border);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(59,130,246,0.2);
+    animation: float 5s ease-in-out infinite;
+    cursor: default;
+}
+
+    .tech-badge:hover {
+        color: #ffffff;
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 30px rgba(59,130,246,0.4);
+    }
+
+    /* ============================
+        stagger floating animation 
+       ============================ */
+    .tech-badge:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+
+    .tech-badge:nth-child(3) {
+        animation-delay: 1s;
+    }
+
+    .tech-badge:nth-child(4) {
+        animation-delay: 1.5s;
+    }
+
+    .tech-badge:nth-child(5) {
+        animation-delay: 2s;
+    }
+
+/* =============================
+   BUTTON INTERACTIONS
+   ============================= */
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons {
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.6s;
+}
+
+    /* =============================
+        Base style for BOTH buttons 
+       ============================= */
+    .hero-buttons .btn {
+        min-width: 180px;   /* same width */
+        height: 52px;       /* same height */
+        padding: 0 28px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    /* ================
+        PRIMARY BUTTON 
+       ================ */
+    .hero-buttons .btn-primary {
+        color: #ffffff;
+        background: linear-gradient(135deg, #3B82F6, #1E40AF);
+    }
+
+        .hero-buttons .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 32px rgba(37, 99, 235, 0.45);
+        }
+
+    /* ==================
+        SECONDARY BUTTON 
+       ================== */
+    .hero-buttons .btn-outline-dark {
+        border: 2px solid var(--primary);
+        color: var(--primary);
+        background: transparent;
+    }
+
+        .hero-buttons .btn-outline-dark:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+/* =============================
+   GLASSMORPHISM IMAGE CARD
+   ============================= */
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+    /* ==============================
+        Glass container behind image 
+       ============================== */
+    .hero-image::before {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 520px;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-radius: 28px;
+        box-shadow: 0 30px 60px rgba(37, 99, 235, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+        z-index: 0;
+    }
+
+    /* ==============
+        Image itself 
+       ============== */
+    .hero-image img {
+        position: relative;
+        z-index: 1;
+        max-width: 340px;
+        width: 100%;
+        border-radius: 20px;
+        animation: float 4s ease-in-out infinite;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 40px rgba(37, 99, 235, 0.35); /* ASP.NET blue glow */
+    }
+
+        /* ====================================
+            Slight hover polish (desktop only) 
+           ==================================== */
+        .hero-image img:hover {
+            transform: translateY(-6px) scale(1.02);
+            transition: all 0.4s ease;
+        }
+
+/* =============================
+   RESPONSIVE ADJUSTMENTS
+   ============================= */
+
+@media (max-width: 768px) {
+
+    .hero-image {
+        margin-top: 50px;
+        position: relative;
+    }
+
+        .hero-image::before {
+            width: 320px;
+            height: 420px;
+        }
+
+        .hero-image img {
+            max-width: 260px;
+        }
+}
+
+@media (max-width: 576px) {
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}
+
+
+/* =============================
+   ANIMATIONS
+   ============================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

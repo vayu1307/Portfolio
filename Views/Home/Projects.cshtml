@@ -1,0 +1,189 @@
+﻿@{
+    ViewData["Title"] = "Projects";
+}
+
+<section class="projects-section">
+    <div class="container">
+        <h2 class="section-title reveal">My Projects</h2>
+        <p class="section-subtitle reveal">
+            Some of the academic projects I’ve built using ASP.NET, PHP, and modern web technologies.
+        </p>
+
+        <div class="projects-grid">
+
+            <!-- Project Card 1 -->
+            <div class="project-card" data-project="1">
+                <h3>Classroom Gazette</h3>
+                <p>
+                    Role-based web application for managing attendance, assignments, lectures,
+                    and academic events with secure access and reporting.
+                </p>
+
+                <div class="tech-stack">
+                    <span>ASP.NET</span>
+                    <span>C#</span>
+                    <span>SQL Server</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="javascript:void(0)" class="btn-primary view-details">View Details</a>
+                    <a href="https://github.com/vayu1307/classroom-gazette" class="btn-secondary">GitHub</a>
+                </div>
+
+                <!-- EXPANDED DETAILS -->
+                <div class="project-details">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Role-based authentication (Admin, Faculty, Student)</li>
+                        <li>Attendance & assignment management</li>
+                        <li>Academic event scheduling</li>
+                    </ul>
+
+                    <h4>My Backend Responsibilities</h4>
+                    <ul>
+                        <li>Database schema & SQL queries</li>
+                        <li>Authentication & authorization logic</li>
+                        <li>CRUD APIs and reporting</li>
+                    </ul>
+
+                    @* <h4>Screenshots</h4>
+                    <div class="screenshots">
+                        <img src="/images/projects/classroom1.png" alt="Screenshot">
+                        <img src="/images/projects/classroom2.png" alt="Screenshot">
+                    </div> *@
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card" data-project="2">
+                <h3>Crime Report Now</h3>
+                <p>
+                    Web-based system for online crime complaint registration and real-time
+                    complaint tracking with secure user access.
+                </p>
+
+                <div class="tech-stack">
+                    <span>ASP.NET</span>
+                    <span>C#</span>
+                    <span>SQL Server</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="javascript:void(0)" class="btn-primary view-details">View Details</a>
+                    <a href="https://github.com/vayu1307/crime-report-now" class="btn-secondary">GitHub</a>
+                </div>
+
+                <!-- EXPANDED DETAILS -->
+                <div class="project-details">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Online crime complaint registration</li>
+                        <li>Status tracking with notifications</li>
+                        <li>Secure user authentication</li>
+                    </ul>
+
+                    <h4>My Backend Responsibilities</h4>
+                    <ul>
+                        <li>Complaint workflow logic</li>
+                        <li>SQL Server procedures</li>
+                        <li>Secure role-based access</li>
+                    </ul>
+
+                    @* <h4>Screenshots</h4>
+                    <div class="screenshots">
+                        <img src="/images/projects/classroom1.png" alt="Screenshot">
+                        <img src="/images/projects/classroom2.png" alt="Screenshot">
+                    </div> *@
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card">
+                <h3>College Cruiser</h3>
+                <p>
+                    Web application designed to manage college bus transportation and
+                    seat reservations efficiently.
+                </p>
+
+                <div class="tech-stack">
+                    <span>PHP</span>
+                    <span>MySQL</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="javascript:void(0)" class="btn-primary view-details">View Details</a>
+                    <a href="https://github.com/vayu1307/college-cruiser" class="btn-secondary">GitHub</a>
+                </div>
+
+                <!-- EXPANDED DETAILS -->
+                <div class="project-details">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Bus route & seat management</li>
+                        <li>Student booking system</li>
+                        <li>Admin dashboard</li>
+                    </ul>
+
+                    <h4>My Backend Responsibilities</h4>
+                    <ul>
+                        <li>MySQL database design</li>
+                        <li>Seat allocation logic</li>
+                        <li>Admin CRUD operations</li>
+                    </ul>
+
+                    @* <h4>Screenshots</h4>
+                    <div class="screenshots">
+                        <img src="/images/projects/classroom1.png" alt="Screenshot">
+                        <img src="/images/projects/classroom2.png" alt="Screenshot">
+                    </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPT -->
+<script>
+        document.querySelectorAll(".view-details").forEach(btn => {
+        btn.addEventListener("click", function () {
+
+            const card = this.closest(".project-card");
+            const details = card.querySelector(".project-details");
+
+            document.querySelectorAll(".project-card.expanded").forEach(openCard => {
+                if (openCard !== card) {
+                    const d = openCard.querySelector(".project-details");
+                    d.style.height = "0px";
+                    openCard.classList.remove("expanded");
+                }
+            });
+
+            if (!card.classList.contains("expanded")) {
+                card.classList.add("expanded");
+                details.style.height = details.scrollHeight + "px";
+
+                setTimeout(() => {
+                    const offset = 120; // header + spacing
+                    const y = card.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: y,
+                        behavior: "smooth"
+                    });
+                }, 300);
+
+            } else {
+                details.style.height = "0px";
+                card.classList.remove("expanded");
+            }
+        });
+    });
+</script>

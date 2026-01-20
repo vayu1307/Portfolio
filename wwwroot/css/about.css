@@ -1,0 +1,193 @@
+﻿/*  ==============================================================================================
+    ABOUT PAGE CSS
+    ============================================================================================== */
+
+/* ================
+    REMOVE SCROLL 
+   ================ */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* =============
+    PAGE BASE 
+   ============= */
+.about-page {
+    height: 80vh;
+    background: radial-gradient(circle at top, #0f3d91, #020617);
+    color: #fff;
+    border-radius: 20px;
+    animation: fadeUp 0.9s ease-out forwards;
+}
+
+/* =============
+    LEFT SIDE
+   ============= */
+.about-left {
+    padding: 35px;
+    animation: slideLeft 0.9s ease-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.about-right {
+    animation: slideRight 0.9s ease-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+    .about-left h1 {
+        font-size: 3rem;
+    }
+
+    .about-left h3 {
+        margin-top: 25px;
+    }
+
+    .about-left ul {
+        padding-left: 18px;
+    }
+
+/* =================
+    Resume Button 
+   ================= */
+.resume-btn {
+    display: inline-block;
+    margin-top: 0px;
+    padding: 12px 26px;
+    border: 1px solid #3b82f6;
+    color: #3b82f6;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    animation: fadeUp 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+    opacity: 0;
+}
+
+    .resume-btn:hover {
+        background: #3b82f6;
+        color: #000;
+    }
+
+/* =====================
+    RIGHT SIDE SKILLS 
+   ===================== */
+.about-right {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    padding: 40px;
+}
+
+.skills-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.skills-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.35);
+}
+
+/* ==============
+    SKILL CARD 
+   ============== */
+.skill-card {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out forwards;
+}
+
+    /* ===================
+        Stagger animation 
+       =================== */
+    .skill-card:nth-child(1) {
+        animation-delay: 0.6s;
+    }
+
+    .skill-card:nth-child(2) {
+        animation-delay: 0.8s;
+    }
+
+    .skill-card:nth-child(3) {
+        animation-delay: 1s;
+    }
+
+    .skill-card:hover {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        transform: translateY(-3px);
+    }
+
+    .skill-card h4 {
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+
+/* ===========
+    LOGOS 
+   =========== */
+.logos {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+    .logos img {
+        width: 34px;
+        height: 34px;
+        filter: grayscale(100%);
+        transition: 0.3s;
+    }
+
+        .logos img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.15);
+        }
+
+/* =====================
+   ENTRANCE ANIMATIONS
+   ===================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
