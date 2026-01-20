@@ -11,7 +11,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build /app/out .
 
-ENV ASPNETCORE_URLS=http://+:10000
-EXPOSE 10000
+EXPOSE 8080
+
 
 ENTRYPOINT ["dotnet", "MyPortfolio.dll"]
