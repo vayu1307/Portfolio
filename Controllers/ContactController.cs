@@ -22,6 +22,12 @@ public class ContactController : Controller
         var fromEmail = Environment.GetEnvironmentVariable("SMTP_EMAIL");
         var appPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
 
+        if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(appPassword))
+        {
+            ModelState.AddModelError("", "Email service is temporarily unavailable.");
+            return View("~/Views/Home/Contact.cshtml", model);
+        }
+        
         var mail = new MailMessage
         {
             From = new MailAddress(fromEmail),
@@ -44,6 +50,6 @@ public class ContactController : Controller
         smtp.Send(mail);
 
         TempData["Success"] = "Message sent successfully!";
-        return RedirectToAction("Index"); // ✅ REQUIRED
+        return RedirectToAction("Index");
     }
 }
