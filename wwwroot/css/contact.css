@@ -25,7 +25,7 @@
     width: 100%;
     max-width: 520px;
     color: #fff;
-    animation: fadeUp 1s ease-out forwards;
+    animation: fade
 }
 
 /* ==========
@@ -127,59 +127,6 @@
     color: #38bdf8;
     transform: translateY(-4px);
     box-shadow: 0 0 15px rgba(56,189,248,0.35);
-}
-
-/* =====================
-   Message Wrapper
-   ===================== */
-.message-wrapper {
-    position: relative;
-}
-
-/* Extra padding so textarea content doesn't overlap */
-.message-wrapper textarea {
-    padding-bottom: 70px;
-}
-
-/* =====================
-   Send Button (Bottom Right)
-   ===================== */
-.message-send {
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    padding: 10px 22px;
-    border-radius: 10px;
-}
-
-/* =====================
-   Social Icons (Bottom Left)
-   ===================== */
-.message-social {
-    position: absolute;
-    left: 14px;
-    bottom: 14px;
-    display: flex;
-    gap: 12px;
-}
-
-.message-social a {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: linear-gradient(145deg, #0b1220, #0f1a33);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #e2e8f0;
-    font-size: 18px;
-    transition: all 0.3s ease;
-}
-
-.message-social a:hover {
-    color: #38bdf8;
-    transform: translateY(-3px);
-    box-shadow: 0 0 12px rgba(56,189,248,0.35);
 }
 
 /* ==============================================
