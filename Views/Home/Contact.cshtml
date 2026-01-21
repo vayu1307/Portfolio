@@ -2,26 +2,32 @@
 @{
     ViewData["Title"] = "Contact";
 }
-
+<body>
 <section class="contact-section">
     <div class="contact-container">
 
         <p class="contact-subtitle">REACH OUT TO ME</p>
         <h2 class="contact-title">Contact.</h2>
 
-        <form asp-action="Send" asp-controller="Contact" method="post" class="contact-form">
+        <form id="contactForm" class="contact-form">
 
             <label>Name</label>
-            <input asp-for="Name" placeholder="Enter your name" required />
+            <input type="text" name="name" placeholder="Your Name" required />
 
             <label>Email</label>
-            <input asp-for="Email" placeholder="example@gmail.com" required />
+            <input type="email" name="email" placeholder="Your Email" required />
 
             <label>Message</label>
-            <textarea asp-for="Message" rows="4" placeholder="Do you have anything to say?" required></textarea>
-
+            <textarea name="message" rows="4" placeholder="Do you have anything to say?" required></textarea>
             <button type="submit" class="contact-btn">Send</button>
         </form>
+
+        <p id="successMsg" style="color: green; display: none;">
+            Message sent successfully!
+        </p>
+        <p id="errorMsg" style="color: red; display: none;">
+            Failed to send message. Please try again.
+        </p>
 
         <!-- Social Icons -->
         <div class="contact-social">
@@ -38,3 +44,28 @@
     </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+    (function () {
+        emailjs.init("MrXw0QVTthzoSXGJq");
+    })();
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs.sendForm(
+            "service_vayu1307",
+            "template_r2p6rhg",
+            this
+        ).then(function () {
+            document.getElementById("successMsg").style.display = "block";
+            document.getElementById("errorMsg").style.display = "none";
+            document.getElementById("contactForm").reset();
+        }, function () {
+            document.getElementById("errorMsg").style.display = "block";
+            document.getElementById("successMsg").style.display = "none";
+        });
+    });
+</script>
+</body>
