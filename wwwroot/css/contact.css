@@ -2,7 +2,7 @@
    Contact Section
    ================= */
 .contact-section {
-    min-height: 80vh;
+    min-height: 70vh;
     background: linear-gradient(120deg, #050b18, #0a1f44);
     position: relative;
     overflow: hidden;
@@ -142,4 +142,5 @@
         transform: translateY(0);
     }
 }
+
 
