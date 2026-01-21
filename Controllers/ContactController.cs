@@ -18,38 +18,42 @@ public class ContactController : Controller
         {
             return View("~/Views/Home/Contact.cshtml", model);
         }
-
-        var fromEmail = Environment.GetEnvironmentVariable("SMTP_EMAIL");
-        var appPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
-
-        if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(appPassword))
+        try
         {
-            ModelState.AddModelError("", "Email service is temporarily unavailable.");
+            var fromEmail = Environment.GetEnvironmentVariable("SMTP_EMAIL");
+            var appPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
+
+            if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(appPassword))
+            {
+                ModelState.AddModelError("", "Email service is temporarily unavailable.");
+                return View("~/Views/Home/Contact.cshtml", model);
+            }
+        
+            var mail = new MailMessage
+            {
+                From = new MailAddress(fromEmail),
+                Subject = "New Contact Message from Portfolio",
+                Body = $@"Name: {model.Name} \nEmail: {model.Email} \n\n Message:\n{model.Message}"
+            };
+
+            mail.To.Add(fromEmail);
+
+            var smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(fromEmail, appPassword),
+                EnableSsl = true
+            };
+
+            smtp.Send(mail);
+
+            TempData["Success"] = "Message sent successfully!";
+            return RedirectToAction("Index");
+        }
+        catch(Exception ex)
+        {
+            // This prevents app crash
+            ModelState.AddModelError("", "Failed to send message. Please try again later.");
             return View("~/Views/Home/Contact.cshtml", model);
         }
-        
-        var mail = new MailMessage
-        {
-            From = new MailAddress(fromEmail),
-            Subject = "New Contact Message from Portfolio",
-            Body = $@"Name: {model.Name}
-                    Email: {model.Email}
-
-                    Message:
-                    {model.Message}"
-        };
-
-        mail.To.Add(fromEmail);
-
-        var smtp = new SmtpClient("smtp.gmail.com", 587)
-        {
-            Credentials = new NetworkCredential(fromEmail, appPassword),
-            EnableSsl = true
-        };
-
-        smtp.Send(mail);
-
-        TempData["Success"] = "Message sent successfully!";
-        return RedirectToAction("Index");
     }
 }
